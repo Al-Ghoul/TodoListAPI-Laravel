@@ -6,7 +6,7 @@ Project URL: https://roadmap.sh/projects/todo-list-api
 
 
 ## Development \[Nix\]
-This project is built with Laravel 11.x [Laravel](https://laravel.com/docs/11.x).
+This project is built with [Laravel 11.x](https://laravel.com/docs/11.x).
 
 ```bash
 # Clone & cd into project
