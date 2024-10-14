@@ -39,7 +39,7 @@ class AuthController extends BaseController
             return $this->sendError('Duplicate entry.', ['error' => 'User already exists.']);
         }
 
-        return $this->sendResponse($success, 'User register successfully.');
+        return $this->sendResponse($success, 'User register successfully.', 201);
     }
 
 
