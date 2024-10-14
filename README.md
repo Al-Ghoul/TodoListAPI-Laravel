@@ -17,6 +17,20 @@ nix develop
 cd app && php artisan serve
 ```
 
+## Routes
+
+|             URI        | Description                                            |
+| :-------------------- | :-----------------------------------------------------: |
+| /api/auth/register    |    Register a new user.                                 |
+| /api/auth/login       |    Login a user.                                        |
+| /api/auth/logout      |    Logout a user.                                       |
+| /api/auth/refresh     |    Refresh a token.                                     |
+| /api/auth/profile     |    Get authenticated user's data.                       |
+| /api/todos            |    Get all todos. paginated with limit (limit is 15 by default) and page.  |
+| /api/todos            |    Create a new todo.                                   |
+| /api/todos/{id}       |    Update a todo.                                       |
+| /api/todos/{id}       |    Delete a todo.                                       |
+
 ## Technology stack
 
 - [Laravel](https://laravel.com/)
