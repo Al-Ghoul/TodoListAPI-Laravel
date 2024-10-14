@@ -1,0 +1,6 @@
+# https://numtide.github.io/devshell
+[[commands]]
+package = "php83"
+
+[[commands]]
+package = "php83Packages.composer"
