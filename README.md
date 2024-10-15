@@ -28,8 +28,8 @@ cd app && php artisan serve
 | /api/auth/profile     |    Get authenticated user's data.                       |
 | /api/todos            |    Get all todos. paginated with limit (limit is 15 by default) and page.  |
 | /api/todos            |    Create a new todo.                                   |
-| /api/todos/{id}       |    Update a todo.                                       |
-| /api/todos/{id}       |    Delete a todo.                                       |
+| /api/todos/{id}       |    Update a todo. (PATCH)                               |
+| /api/todos/{id}       |    Delete a todo. (DELETE)                              |
 
 ## Technology stack
 
