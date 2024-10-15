@@ -23,14 +23,18 @@ Route::group([
     Route::post('/profile', [AuthController::class, 'profile'])->middleware('auth:api');
 });
 
-Route::group([
-    'middleware' => 'api',
-    'prefix' => 'todos'
+Route::middleware(['throttle:todos'])->prefix('todos')->group(
+    function () {
 
-], function () {
+        Route::get('', [TodoController::class, 'index']);
+        Route::post('', [TodoController::class, 'store'])->middleware('auth:api');
+        Route::patch('{id}', [TodoController::class, 'update'])->middleware('auth:api');
+        Route::delete('{id}', [TodoController::class, 'destroy'])->middleware('auth:api');
 
-    Route::get('', [TodoController::class, 'index']);
-    Route::post('', [TodoController::class, 'store'])->middleware('auth:api');
-    Route::patch('{id}', [TodoController::class, 'update'])->middleware('auth:api');
-    Route::delete('{id}', [TodoController::class, 'destroy'])->middleware('auth:api');
-});
+        Route::fallback(function () {
+            return response()->json([
+                'message' => 'Too many requests. Please wait before retrying.',
+            ], 429);
+        });
+    }
+);
