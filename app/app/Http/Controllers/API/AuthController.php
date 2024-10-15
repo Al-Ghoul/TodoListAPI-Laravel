@@ -27,7 +27,7 @@ class AuthController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
+            return $this->sendError('Validation Error.', $validator->errors(), 400);
         }
 
         $input = $request->all();
@@ -36,7 +36,7 @@ class AuthController extends BaseController
         $user = User::create($input);
         $success['user'] =  $user;
         } catch (UniqueConstraintViolationException $e) {
-            return $this->sendError('Duplicate entry.', ['error' => 'User already exists.']);
+            return $this->sendError('Duplicate entry.', ['error' => 'User already exists.'], 409);
         }
 
         return $this->sendResponse($success, 'User register successfully.', 201);
@@ -53,7 +53,7 @@ class AuthController extends BaseController
         $credentials = request(['email', 'password']);
 
         if (! $token = Auth::attempt($credentials)) {
-            return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
+            return $this->sendError('Unauthorised.', ['error' => 'Unauthorised'], 401);
         }
 
         $success = $this->respondWithToken($token);
