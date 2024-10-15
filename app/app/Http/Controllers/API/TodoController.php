@@ -30,7 +30,7 @@ class TodoController extends Controller
             'message' => 'Todo created successfully',
             'data' => $todo,
             'success' => true,
-        ]);
+        ], 201);
     }
 
     public function update(Request $request, $id)
